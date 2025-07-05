@@ -1,0 +1,160 @@
+ /* Custom CSS for fonts and animations */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark GitHub-like background */
+            color: #c9d1d9; /* Light gray text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Mono', monospace; /* Monospace for headings */
+            color: #58a6ff; /* Blue accent for headings */
+        }
+
+        .text-neon-green {
+            color: #39ff14; /* Neon green accent */
+        }
+
+        .bg-dark-blue {
+            background-color: #161b22; /* Slightly lighter dark blue for sections */
+        }
+
+        .border-neon-blue {
+            border-color: #00f0ff; /* Neon blue border */
+        }
+
+        /* Glitch effect for landing page text */
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 #00f0ff, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #39ff14;
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 #00f0ff, 0.025em 0.025em 0 #ff00ff, -0.05em -0.05em 0 #39ff14;
+            }
+            20% {
+                text-shadow: 0.025em 0.05em 0 #00f0ff, -0.025em -0.05em 0 #ff00ff, 0.05em 0 0 #39ff14;
+            }
+            25% {
+                text-shadow: 0.05em 0 0 #00f0ff, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #39ff14;
+            }
+            30% {
+                text-shadow: -0.05em -0.025em 0 #00f0ff, 0.025em 0.025em 0 #ff00ff, -0.05em -0.05em 0 #39ff14;
+            }
+            100% {
+                text-shadow: none;
+            }
+        }
+
+        .glitch-text {
+            animation: glitch 2s infinite alternate;
+        }
+
+        /* Binary rain effect */
+        .binary-rain-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+
+        .binary-column {
+            position: absolute;
+            white-space: pre;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: #39ff14;
+            opacity: 0.1;
+            animation: flowDown linear infinite;
+        }
+
+        @keyframes flowDown {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Typing effect for about section */
+        .typing-effect::after {
+            content: '|';
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #39ff14; }
+        }
+
+        /* Terminal styling */
+        .terminal {
+            background-color: #000;
+            border: 1px solid #39ff14;
+            font-family: 'Space Mono', monospace;
+            color: #39ff14;
+            overflow-y: auto;
+            max-height: 400px;
+            padding: 1rem;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+
+        .terminal-input {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: #39ff14;
+            width: calc(100% - 1.5rem); /* Account for prompt */
+        }
+
+        .terminal-output div {
+            margin-bottom: 0.25rem;
+        }
+
+        /* D3.js specific styling */
+        .node circle {
+            fill: #58a6ff;
+            stroke: #00f0ff;
+            stroke-width: 1.5px;
+            cursor: pointer;
+        }
+
+        .node text {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            fill: #c9d1d9;
+            pointer-events: none;
+            text-shadow: 0 0 3px rgba(0,0,0,0.8);
+        }
+
+        .link {
+            stroke: #39ff14;
+            stroke-opacity: 0.6;
+            stroke-width: 2px;
+            marker-end: url(#arrowhead); /* Add arrowhead to links */
+        }
+
+        /* SVG definitions for arrowheads */
+        svg defs marker {
+            fill: #39ff14;
+        }
+
+        /* Scrollbar styling for Webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #39ff14;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }

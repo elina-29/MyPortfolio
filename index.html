@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Sentinel - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- D3.js CDN for the skills graph -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+       
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Binary Rain Background -->
+    <div class="binary-rain-container"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 bg-dark-blue bg-opacity-90 shadow-lg p-4 flex justify-center">
+        <ul class="flex space-x-8 text-lg">
+            <li><a href="#landing" class="text-c9d1d9 hover:text-neon-green transition-colors duration-300 rounded-md px-3 py-2">Home</a></li>
+            <li><a href="#about" class="text-c9d1d9 hover:text-neon-green transition-colors duration-300 rounded-md px-3 py-2">About</a></li>
+            <li><a href="#skills" class="text-c9d1d9 hover:text-neon-green transition-colors duration-300 rounded-md px-3 py-2">Skills</a></li>
+            <li><a href="#projects" class="text-c9d1d9 hover:text-neon-green transition-colors duration-300 rounded-md px-3 py-2">Projects</a></li>
+            <li><a href="#contact" class="text-c9d1d9 hover:text-neon-green transition-colors duration-300 rounded-md px-3 py-2">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="landing" class="h-screen flex flex-col items-center justify-center relative overflow-hidden text-center p-8">
+        <h1 class="text-6xl md:text-8xl font-extrabold mb-4 glitch-text">Hi, I am Pakhi Sarkar</h1>
+        <p class="text-xl md:text-3xl text-neon-green mb-8 typing-effect">A Cyber Security Enthusiast</p>
+        <a href="#about" class="bg-neon-green text-dark-blue font-bold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105">
+            <i class="fas fa-arrow-down mr-2"></i> Explore My Domain
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-screen bg-dark-blue py-20 px-8 flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Left: Image/Visual -->
+            <div class="relative flex justify-center items-center p-4">
+                <div class="absolute inset-0 border-4 border-neon-green rounded-xl transform rotate-6 animate-pulse-slow"></div>
+                <div class="absolute inset-0 border-4 border-neon-blue rounded-xl transform -rotate-6 animate-pulse-slow delay-200"></div>
+                <img src="https://placehold.co/400x400/161b22/39ff14?text=CYBER+ARCHITECT" alt="Cyber Architect Avatar" class="relative z-10 rounded-xl shadow-2xl transition-all duration-500 hover:scale-105">
+            </div>
+            <!-- Right: Text Content -->
+            <div class="text-left">
+                <h2 class="text-5xl font-bold mb-6 text-neon-green">About Me: Decoding the Digital Realm</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    Greetings, fellow explorer of the digital frontier.  I am a <span class="text-neon-blue font-semibold"> Cybersecurity Enthusiast</span>, a seeker of vulnerabilities, and a builder of resilient systems. My journey began with a fascination for intricate systems and a drive to fortify them against unseen threats.
+                </p>
+                <p class="text-lg leading-relaxed mb-4">
+                    With hands-on experience in <span class="text-neon-blue font-semibold">vulnerability assessments</span>, <span class="text-neon-blue font-semibold">threat analysis</span>, and <span class="text-neon-blue font-semibold">secure development practices</span>, I’m driven by curiosity and a constant urge to explore the unseen layers of the digital world.
+                </p>
+                <p class="text-lg leading-relaxed mb-4">
+                    I believe that true security is about thinking ahead — predicting threats, not just reacting to them. Whether it’s analyzing phishing vectors, researching CVEs, or diving into secure architecture, I’m always looking for the next challenge that pushes me to grow.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Let's connect and fortify the future, one byte at a time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (D3.js Directed Graph) -->
+    <section id="skills" class="min-h-screen py-20 px-8 flex flex-col items-center justify-center relative overflow-hidden">
+        <h2 class="text-5xl font-bold mb-12 text-neon-green text-center">My Skill Map</h2>
+        <div class="w-full max-w-7xl h-[600px] bg-dark-blue rounded-xl shadow-2xl border border-neon-blue p-4 flex items-center justify-center">
+            <svg id="skills-graph" class="w-full h-full"></svg>
+        </div>
+        <p class="text-center text-sm text-gray-400 mt-4">Hover over nodes for details, drag to explore connections.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="min-h-screen bg-dark-blue py-20 px-8 flex flex-col items-center relative overflow-hidden">
+        <h2 class="text-5xl font-bold mb-12 text-neon-green text-center">Projects: Forging Digital Defenses</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+            <!-- Project Card 1 -->
+            <div class="bg-gray-800 rounded-xl p-8 shadow-lg border border-neon-blue transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-3xl font-bold text-neon-blue mb-4">Phishing Email Detector</h3>
+                <p class="text-gray-300 mb-4">Built a modular phishing detection tool that analyzes .eml files for spoofed senders, malicious URLs, and suspicious content. Combines SPF verification, VirusTotal reputation checks, and final verdict generation.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Python</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Web Security</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Email Analysis</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/elina-29/Phishing-Email-detector" class="text-neon-green hover:underline"><i class="fab fa-github mr-2"></i>GitHub</a>
+                    
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="bg-gray-800 rounded-xl p-8 shadow-lg border border-neon-blue transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-3xl font-bold text-neon-blue mb-4">Keylogger</h3>
+                <p class="text-gray-300 mb-4">Created a minimal keylogger to understand input capturing methods used in malware. Designed strictly for awareness and testing.     
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Python</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Malware Research</span>
+                    
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/elina-29/KeyLogger" class="text-neon-green hover:underline"><i class="fab fa-github mr-2"></i>GitHub</a>
+                   
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="bg-gray-800 rounded-xl p-8 shadow-lg border border-neon-blue transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-3xl font-bold text-neon-blue mb-4">Vulnerability Feed & CVE Tracker</h3>
+                <p class="text-gray-300 mb-4">A CVE intelligence tool that pulls and summarizes recent vulnerabilities from NVD, threat feeds, and security blogs. Helps security teams stay updated and act faster.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Python</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">API Integration</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">CVE</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-neon-green hover:underline"><i class="fab fa-github mr-2"></i>GitHub</a>
+                   
+                </div>
+            </div>
+ 
+           <!-- Project Card 4 -->
+            <div class="bg-gray-800 rounded-xl p-8 shadow-lg border border-neon-blue transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-3xl font-bold text-neon-blue mb-4">E-library Portal</h3>
+                <p class="text-gray-300 mb-4">Designed a responsive front-end for a school’s digital library interface with clear navigation and modern layout. Built using HTML, CSS, and a touch of JavaScript.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">HTML</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">CSS</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Web Dev</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://elina-29.github.io/AscentAcademy_E-library/" class="text-neon-green hover:underline"><i class="fab fa-github mr-2"></i>GitHub</a>
+                   
+                </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="bg-gray-800 rounded-xl p-8 shadow-lg border border-neon-blue transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-3xl font-bold text-neon-blue mb-4">Healthy Odisha</h3>
+                <p class="text-gray-300 mb-4"> Created a health awareness website as part of a hackathon. Included different diseases and nearby medical care units.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">HTML</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">CSS</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Web Dev</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://alokik0112.github.io/Healthy-Odisha/" class="text-neon-green hover:underline"><i class="fab fa-github mr-2"></i>GitHub</a>
+                    
+                </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="bg-gray-800 rounded-xl p-8 shadow-lg border border-neon-blue transform hover:scale-105 transition-transform duration-300">
+                <h3 class="text-3xl font-bold text-neon-blue mb-4">Scientific Calculator</h3>
+                <p class="text-gray-300 mb-4"> Built a basic Scientific calculator app using pure HTML, CSS, and JavaScript. Features clean layout and essential arithmetic operations.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">HTML</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">CSS</span>
+                    <span class="bg-gray-700 text-sm text-neon-green px-3 py-1 rounded-full">Web Dev</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://elina-29.github.io/AscentAcademy_Calculator/" class="text-neon-green hover:underline"><i class="fab fa-github mr-2"></i>GitHub</a>
+                    
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section (Terminal) -->
+    <section id="contact" class="min-h-screen py-20 px-8 flex flex-col items-center justify-center relative overflow-hidden">
+        <h2 class="text-5xl font-bold mb-12 text-neon-green text-center">Contact: Initiate Secure Connection</h2>
+        <div class="w-full max-w-3xl bg-black rounded-xl shadow-2xl border border-neon-green p-6 terminal">
+            <div id="terminal-output" class="terminal-output mb-4">
+                <div><span class="text-neon-blue">guest@portfolio</span>:<span class="text-purple-400">~</span>$ Welcome to the secure communication channel. Type 'help' for commands.</div>
+            </div>
+            <div class="flex items-center">
+                <span class="text-neon-blue">guest@portfolio</span>:<span class="text-purple-400">~</span>$ <input type="text" id="terminal-input" class="terminal-input flex-grow" autofocus>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark-blue py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Digital Sentinel. All rights reserved. Built with <span class="text-red-500">&hearts;</span> and code.</p>
+    </footer>
+
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>
